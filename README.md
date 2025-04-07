@@ -1,3 +1,3 @@
 # Curiosity
 
-Collection of visual representations about prehistory and history. 
+Collection of visual representations about prehistory and history.
