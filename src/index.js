@@ -38,8 +38,8 @@ var mouseover = function (event) {
   const absoluteTop = ChartDiv.getBoundingClientRect().top;
   const absoluteLeft = ChartDiv.getBoundingClientRect().left;
   const offset = 75;
-  const x = absoluteLeft + offset + event.w;
-  const y = absoluteTop + event.y - event.h;
+  const x = absoluteLeft + offset + event.w + window.scrollX;
+  const y = absoluteTop + event.y - event.h + window.scrollY;
 
   Tooltip.style.left = `${x + 10}px`; // Adjust position as needed
   Tooltip.style.top = `${y + 10}px`; // Adjust position as needed
