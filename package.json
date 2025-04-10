@@ -24,12 +24,12 @@
   },
   "dependencies": {
     "d3": "^7.9.0",
-    "d3-milestones": "^1.4.7",
     "d3-timeline": "^1.0.1",
     "d3kit": "^3.2.0",
     "d3kit-timeline": "^2.0.1",
     "labella": "^1.1.4",
     "lodash": "^4.17.21",
-    "node": "^18.20.8"
+    "node": "^18.20.8",
+    "util": "^0.12.5"
   }
 }
