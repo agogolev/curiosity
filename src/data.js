@@ -87,7 +87,7 @@ export const milestones = [
   {
     time: new Date(-12900, 0, 1),
     color: "#FFA500",
-    name: "Trois-Frères, The Sorcerer painting",
+    name: "The Sorcerer of Trois-Frères",
     country: "France",
     short_description: "First depiction of an anthopomorphic creature.",
     description:
