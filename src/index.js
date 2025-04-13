@@ -48,10 +48,15 @@ var mouseover = function (event) {
     Tooltip.style.top = `${y + 10}px`; // Adjust position as needed
     Tooltip.style.display = "block";
 
+    if (event.data.country) {
+      const countryDiv = document.createElement("div");
+      countryDiv.textContent = event.data.country;
+      Tooltip.appendChild(countryDiv);
+    }
+    
     const shortDescription = document.createElement("div");
     shortDescription.textContent = event.data.short_description;
     Tooltip.appendChild(shortDescription);
-
 
     if (event.data.description) {
       const description = document.createElement("div");
@@ -64,6 +69,12 @@ var mouseover = function (event) {
       imgElement.src = "static/img/" + event.data.image;
       imgElement.style.width = "300px";
       Tooltip.appendChild(imgElement);
+
+      const imgLink = document.createElement("a");
+      imgLink.href = event.data.link;
+      imgLink.textContent = event.data.link_text;
+      console.log(imgLink);
+      Tooltip.appendChild(imgLink);
     }
 
     Tooltip.style.visibility = "visible";
