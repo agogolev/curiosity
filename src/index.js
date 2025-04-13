@@ -38,7 +38,6 @@ const ChartDiv = document.getElementsByClassName("d3kit-chart-root")[0];
 // Three function that change the tooltip when user hover / move / leave a cell
 var mouseover = function (event) {
   if (event.data.short_description) {
-    console.log(event);
     const absoluteTop = ChartDiv.getBoundingClientRect().top;
     const absoluteLeft = ChartDiv.getBoundingClientRect().left;
     const offset = 100;
@@ -51,17 +50,21 @@ var mouseover = function (event) {
 
     const shortDescription = document.createElement("div");
     shortDescription.textContent = event.data.short_description;
-
-    const description = document.createElement("div");
-    description.textContent = event.data.description;
-
-    const imgElement = document.createElement("img");
-    imgElement.src = "static/img/" + event.data.image;
-    imgElement.style.width = "300px";
-
     Tooltip.appendChild(shortDescription);
-    Tooltip.appendChild(description);
-    Tooltip.appendChild(imgElement);
+
+
+    if (event.data.description) {
+      const description = document.createElement("div");
+      description.textContent = event.data.description;
+      Tooltip.appendChild(description);
+    }
+
+    if (event.data.image) {
+      const imgElement = document.createElement("img");
+      imgElement.src = "static/img/" + event.data.image;
+      imgElement.style.width = "300px";
+      Tooltip.appendChild(imgElement);
+    }
 
     Tooltip.style.visibility = "visible";
   }
@@ -185,7 +188,8 @@ const data = d3.csv(
   "static/vostok_10000.csv",
   // When reading the csv, format variables:
   function (d) {
-    return { date: new Date(-d.year, 0, 1), temp: parseFloat(d.temp) };
+    // d.year is a year BP -- before present. Subtract from "current" time 2000 AC to get the date.
+    return { date: new Date(2000-d.year, 0, 1), temp: parseFloat(d.temp) };
   },
 ).then(
   renderVostokTemps);

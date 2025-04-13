@@ -1,5 +1,14 @@
 export const milestones = [
   {
+    time: new Date(-2700, 0, 1),
+    color: "#FFA500",
+    name: "Pyramid of Djoser",
+    country: "Egypt",
+    short_description: "The very first pyramid was built in the Nile Valley.",
+    description: "I included this milestone for the reference.",
+    image: "",
+  },
+  {
     time: new Date(-7500, 0, 1),
     color: "#A580A5",
     name: "Çatalhöyük",
@@ -67,7 +76,7 @@ export const milestones = [
     image: "gobekli_tepe.jpg",
   },
   {
-    time: new Date(-11700, 0, 1),
+    time: new Date(-9700, 0, 1),
     color: "#A5A5FF",
     name: "Younger Dryas END",
     country: "",
@@ -76,7 +85,7 @@ export const milestones = [
     image: "",
   },
   {
-    time: new Date(-12900, 0, 1),
+    time: new Date(-10900, 0, 1),
     color: "#A5A5FF",
     name: "Younger Dryas START",
     country: "",
