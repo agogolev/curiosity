@@ -264,16 +264,15 @@ export const milestones = [
     type: "milestone",
   },
   {
-    time: new Date(-75000, 0, 1),
+    time: new Date(-45000, 0, 1),
     color: "#FFA500",
     name: "Shanidar Flower Burial",
     country: "Iraqi Kurdistan ",
-    short_description: "Shanidar Flower Burial",
-    description:
-      "Woman burial with flowers.",
+    short_description: "An adult male, aged 30-45 years, was found with clumps of pollen, which is the best evidence we have for Neanderthal ritual burial.",
+    description: "",
     image: "shanidar_flower_burial.jpg",
-    link: "hhttps://www.sciencealert.com/meet-shanidar-z-75000-year-old-neanderthal-womans-face-reconstructed",
-    link_text: "sciencealert",
+    link: "https://si-siris.blogspot.com/2019/06/discovering-culture-in-shanidar-cave.html",
+    link_text: "si-siris.blogspot.com",
     type: "milestone",
   },
   {

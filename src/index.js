@@ -33,11 +33,16 @@ var chart = new d3KitTimeline("#main_timeline", {
 
 // Prepare to handle tooltip.
 const Tooltip = document.getElementById("tooltip");
+Tooltip.style.visibility = 'hidden';
+Tooltip.innerHTML = "";
+Tooltip.setAttribute("isClicked", false);
+
 const ChartDiv = document.getElementsByClassName("d3kit-chart-root")[0];
 
 // Three function that change the tooltip when user hover / move / leave a cell
 var mouseover = function (event) {
   if (event.data.short_description) {
+    Tooltip.innerHTML = "";
     const absoluteTop = ChartDiv.getBoundingClientRect().top;
     const absoluteLeft = ChartDiv.getBoundingClientRect().left;
     const offset = 100;
@@ -73,7 +78,6 @@ var mouseover = function (event) {
       const imgLink = document.createElement("a");
       imgLink.href = event.data.link;
       imgLink.textContent = event.data.link_text;
-      console.log(imgLink);
       Tooltip.appendChild(imgLink);
     }
 
@@ -82,16 +86,41 @@ var mouseover = function (event) {
 };
 
 var mouseout = function () {
-  Tooltip.style.visibility = "hidden";
-  // Remove residual content
-  Tooltip.innerHTML = "";
+  if (Tooltip.getAttribute("isClicked") == "false") {
+    Tooltip.style.visibility = "hidden";
+    // Remove residual content
+    Tooltip.innerHTML = "";
+  }
 };
+
+var mouseclick = function () {
+  Tooltip.setAttribute("isClicked", true);
+}
+
+Tooltip.addEventListener('click', function(event) {
+  // Check if the clicked element or any of its parents is an <a> tag
+  let targetElement = event.target;
+  while (targetElement && targetElement !== Tooltip) {
+    if (targetElement.tagName === 'A') {
+      // It was a link click, so do nothing (let the link navigate)
+      return;
+    }
+    targetElement = targetElement.parentNode;
+  }
+
+  // If the loop completes without finding an <a> tag, hide the div
+  Tooltip.style.visibility = 'hidden';
+  Tooltip.innerHTML = "";
+  Tooltip.setAttribute("isClicked", false);
+});
+
 
 // Render the main timeline.
 
 chart
   .data(Data.milestones)
   .on("labelMouseover", mouseover)
+  .on("labelClick", mouseclick)
   .on("labelMouseout", mouseout)
   .visualize();
 
