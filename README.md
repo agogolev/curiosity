@@ -1,3 +1,3 @@
 # Curiosity
 
-Collection of visual representations about prehistory and history.
+A prehistoric timeline with milestones that caught my attention.  Available at https://agogolev.github.io/curiosity.
